@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int getcnt(int goal, int pos)
+{
+    if(goal==pos)return 1;
+    if(goal-pos>1)
+        return getcnt(goal, pos+1)+getcnt(goal, pos+2);
+    else
+        return getcnt(goal, pos+1);
+}
+
+int main()
+{
+    int goal, cnt;
+    scanf("%d", &goal);
+    if(goal<4 || goal>30)
+    {
+        printf("입력 오류\n");
+        return 0;
+    }
+    cnt=getcnt(goal,0);
+    printf("%d\n", cnt);
+
+    return 0;
+}
